@@ -47,11 +47,14 @@
                         imageWidth: 200, //making the image expand
                         availableInventory: 5
                       },
+                      
                       cart: [],
                     },
                     methods: {
                         addToCart: function () {
                             this.cart.push(this.product.id);
+                           // this.cart.push(this.product1.id);
+
                         },
                         showCheckout() {
                             this.showProduct = this.showProduct ? 
@@ -76,7 +79,8 @@
 
                     
 
-            });
+            }
+    );
         </script>
         </body>
         </html>
