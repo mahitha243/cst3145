@@ -7,7 +7,67 @@
     </head>
     <body> 
 
-        </body>
-        </html>
+        <script type="text/javascript"> 
+            var webstore = new Vue(
+                {
+                    el: '#app',
+                    data: {
+                        sitename: "After School Club",
+                        showProduct: true,
+                        product:{
+                            id: 1001,
+                            title: "Math" ,
+                            location: "London" ,
+                            price: 100,
+                            NoOfSpaces: 5,
+                            image: "image/math.png",
+                            imageWidth: 200, //making the image expand
+                            availableInventory: 5
+                          },
+                          
+                          cart: [],
+                        },
+                        methods: {
+                            addToCart: function () {
+                                this.cart.push(this.product.id);
+            
+                               // this.cart.push(this.product1.id);
+            
+                            },
+                            showCheckout() {
+                                this.showProduct = this.showProduct ? 
+                                false : true
+            
+                                // if(this.showProduct) {
+                                //     this.showProduct = false
+                                // }
+                                // else {
+                                //     this.showProduct = true
+                                // }
+                            }
+                        },
+                        computed: {
+                            cartItemCount: function() {
+                                return this.cart.length || "";
+                            },
+            
+                            canAddToCart: function() {
+                                return this.product.availableInventory > this.cartItemCount;
+                            },
+            
+                            itemReduction: function(){
+                                if(this.product.availableInventory> this.cartItemCount){
+                                    return this.product.NoOfSpaces - 1
+                                }  
+                            }
+                        }
+            
+                        
+            
+                }
+            );
+            </script>
+    </body>
+    </html>
 
     
