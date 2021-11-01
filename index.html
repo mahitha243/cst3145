@@ -1,4 +1,4 @@
-<Dpctype html>
+<Doctype html>
     <head>
         <title> VUE.JS PET DEPOT </title>
         <script src="https://unpkg.com/vue"></script>
@@ -16,22 +16,22 @@
                 <br>
                 <br>
                 <div v-if='showProduct'>
-                <h1 v-text="sitename"></h1>
-                <p>{{location}}</p>
-                <img v-bind:src="product.image"
-                v-bind:width= 'product.imageWidth'>
-                <p>{{product.title}} </p>
-                <p>Number of Spaces: {{product.NoOfSpaces}}</p>
-                <p>price: {{product.price}} </p>
-                <button @click="addToCart" v-bind:disabled='!canAddToCart'>Add to cart</button>
-            </main>
-        </div>
+                    <h1 v-text="sitename"></h1>
+                    <img v-bind:src="product.image"
+                    v-bind:width= 'product.imageWidth'>
+                    <h2>{{product.title}} </h2>
+                    <p>{{product.location}}</p>
+                    <p>Number of Spaces: {{product.NoOfSpaces}}</p>
+                    <p>price: {{product.price}} </p>
+                    <button @click="addToCart" v-bind:disabled='!canAddToCart'>Add to cart</button>
+                </main>
+            </div>
         </div>
         <div v-else>
 
         </div>
         <script type="text/javascript"> 
-        var webstore = new Vue(
+            var webstore = new Vue(
             {
                 el: '#app',
                 data: {
@@ -44,45 +44,44 @@
                         price: 100,
                         NoOfSpaces: 5,
                         image: "image/math.png",
-                        imageWidth: 200, //making the image expand
-                        availableInventory: 5
-                      },
-                      
-                      cart: [],
-                    },
-                    methods: {
-                        addToCart: function () {
-                            this.cart.push(this.product.id);
-                           // this.cart.push(this.product1.id);
+                imageWidth: 200, //making the image expand
+                availableInventory: 5
+            },
 
-                        },
-                        showCheckout() {
-                            this.showProduct = this.showProduct ? 
-                            false : true
+            cart: [],
+        },
+        methods: {
+            addToCart: function () {
+                this.cart.push(this.product.id);
+                   // this.cart.push(this.product1.id);
 
-                            // if(this.showProduct) {
-                            //     this.showProduct = false
-                            // }
-                            // else {
-                            //     this.showProduct = true
-                            // }
-                        }
-                    },
-                    computed: {
-                        cartItemCount: function() {
-                            return this.cart.length || "";
-                        },
-                        canAddToCart: function() {
-                            return this.product.availableInventory > this.cartItemCount;
-                        }
-                    }
+               },
+               showCheckout() {
+                this.showProduct = this.showProduct ? 
+                false : true
 
-                    
-
+                    // if(this.showProduct) {
+                    //     this.showProduct = false
+                    // }
+                    // else {
+                    //     this.showProduct = true
+                    // }
+                }
+            },
+            computed: {
+                cartItemCount: function() {
+                    return this.cart.length || "";
+                },
+                canAddToCart: function() {
+                    return this.product.availableInventory > this.cartItemCount;
+                }
             }
-    );
-        </script>
-        </body>
-        </html>
 
-    
+            
+
+        }
+        );
+    </script>
+</body>
+</html>
+
