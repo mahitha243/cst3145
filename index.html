@@ -8,7 +8,7 @@
     <body> 
         <div id="app">
             <main>
-                <button @click='showCheckout'>
+                <button v-on:click='showCheckout'>
                     {{cartItemCount}}
                     <span class='fas fa-shopping-cart'></span>
                     Check Out
@@ -23,7 +23,7 @@
                     <p>{{product.location}}</p>
                     <p>Number of Spaces: {{product.NoOfSpaces}}</p>
                     <p>price: {{product.price}} </p>
-                    <button @click="addToCart" v-bind:disabled='!canAddToCart'>Add to cart</button>
+                    <button v-on:click="addToCart" v-bind:disabled='!canAddToCart'>Add to cart</button>
                 </main>
             </div>
         </div>
@@ -49,13 +49,16 @@
             },
 
             cart: [],
+
         },
         methods: {
             addToCart: function () {
                 this.cart.push(this.product.id);
+                this.product.NoOfSpaces--
                    // this.cart.push(this.product1.id);
+                  
+                },
 
-               },
                showCheckout() {
                 this.showProduct = this.showProduct ? 
                 false : true
@@ -70,15 +73,14 @@
             },
             computed: {
                 cartItemCount: function() {
-                    return this.cart.length || "";
+                    return this.cart.length || "0";
                 },
+
                 canAddToCart: function() {
                     return this.product.availableInventory > this.cartItemCount;
                 }
-                
-            }
 
-            
+            }
 
         }
         );
