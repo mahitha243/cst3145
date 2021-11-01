@@ -31,6 +31,7 @@
 
         </div>
         <script type="text/javascript"> 
+          //Vue Object creation
             var webstore = new Vue(
             {
                 el: '#app',
@@ -51,31 +52,27 @@
             cart: [],
 
         },
+
         methods: {
+            //Adds Product to carts and decreases NoOfSpaces by 1
             addToCart: function () {
                 this.cart.push(this.product.id);
-                this.product.NoOfSpaces--
-                   // this.cart.push(this.product1.id);
-                  
+                this.product.NoOfSpaces--      
                 },
 
+             //Toggle visibility of the of product once checked-out
                showCheckout() {
                 this.showProduct = this.showProduct ? 
                 false : true
-
-                    // if(this.showProduct) {
-                    //     this.showProduct = false
-                    // }
-                    // else {
-                    //     this.showProduct = true
-                    // }
                 }
             },
             computed: {
+                //returns length of the cart items
                 cartItemCount: function() {
                     return this.cart.length || "0";
                 },
 
+                //checks if cartItems is < availableInventory
                 canAddToCart: function() {
                     return this.product.availableInventory > this.cartItemCount;
                 }
