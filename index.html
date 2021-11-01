@@ -6,7 +6,30 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/5.15.1/css/all.min.css">
     </head>
     <body> 
-
+        <div id="app">
+            <main>
+                <button v-on:click='showCheckout'>
+                    {{cartItemCount}}
+                    <span class='fas fa-shopping-cart'></span>
+                    Check Out
+                </button>
+                <br>
+                <br>
+                <div v-if='showProduct'>
+                <h1 v-text="sitename"></h1>
+                <img v-bind:src="product.image"
+                v-bind:width= 'product.imageWidth'>
+                <h2>{{product.title}} </h2>
+                <p>Location: {{product.location}}</p>
+                <p>Number of Spaces: {{product.NoOfSpaces}}</p>
+                <p>price: {{product.price}} </p>
+                <button v-on:click="addToCart" v-bind:disabled='!canAddToCart'>Add to cart</button>
+            </main>
+        </div>
+        </div>
+        <div v-else>
+        
+        </div>
         <script type="text/javascript"> 
             var webstore = new Vue(
                 {
