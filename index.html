@@ -45,8 +45,8 @@
                         price: 100,
                         NoOfSpaces: 5,
                         image: "image/math.png",
-                imageWidth: 200, //making the image expand
-                availableInventory: 5
+                     imageWidth: 200, //making the image expand
+                     availableInventory: 5
             },
 
             cart: [],
@@ -69,7 +69,7 @@
             computed: {
                 //returns length of the cart items
                 cartItemCount: function() {
-                    return this.cart.length || "0";
+                    return this.cart.length
                 },
 
                 //checks if cartItems is < availableInventory
@@ -84,4 +84,3 @@
     </script>
 </body>
 </html>
-
